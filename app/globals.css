@@ -915,8 +915,8 @@ footer {
 
 .map-section {
   width: 100%;
-  background-color: #f1f5f9;
-  padding: 64px 16px;
+  background-color: transparent;
+  padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -58,7 +58,7 @@ export default function ModernAppPlayer() {
     <section className="map-section">
       
       {/* Mobile App Container */}
-      <div className="map-device">
+      <div className="map-device relative z-10 shadow-2xl shadow-black/50 border border-white/10">
         
         <audio 
           ref={audioRef} 

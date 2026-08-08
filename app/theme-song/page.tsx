@@ -249,12 +249,6 @@ export default function ThemeSongPage() {
           filter: drop-shadow(0 0 40px rgba(13,148,136,0.2));
         }
 
-        /* Apply border directly to the phone mockup container */
-        .ts-player-widget .map-device {
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-        }
-
         /* ── Responsive ────────────────────────────────────────── */
         @media (max-width: 900px) {
           .ts-player-container {
