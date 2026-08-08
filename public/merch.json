@@ -1,0 +1,39 @@
+[
+  {
+    "id": "6a5bf22885300",
+    "name": "Newsboy KIR Hat 100% Wool (all sizes)",
+    "description": "Classic Keepin' It Real newsboy cap in 100% wool. One size fits all. Shipping included.",
+    "price": 34.00,
+    "imageUrl": "/merch-hat.jpg",
+    "hasSizes": false,
+    "createdAt": "2024-05-14T00:00:00.000Z"
+  },
+  {
+    "id": "6a5bf05c752e2",
+    "name": "Bright Neon Yellow KIR Bike Jacket (all sizes)",
+    "description": "High-visibility neon yellow cycling jacket featuring the Keepin' It Real logo. Perfect for the road. Shipping included.",
+    "price": 85.00,
+    "imageUrl": "/merch-jacket.jpg",
+    "hasSizes": true,
+    "createdAt": "2024-05-14T00:00:00.000Z"
+  },
+  {
+    "id": "6a5bf01bedfc2",
+    "name": "Graphite Color KIR Polo Shirt (all sizes)",
+    "description": "Premium graphite polo shirt with embroidered Keepin' It Real logo. Available in all sizes. Shipping included.",
+    "price": 65.00,
+    "imageUrl": "/merch-polo.jpg",
+    "hasSizes": true,
+    "createdAt": "2024-05-14T00:00:00.000Z"
+  },
+  {
+    "id": "original-polo",
+    "name": "Polo Shirt",
+    "description": "Keepin It Real Polo Shirt with Logo",
+    "price": 49.55,
+    "imageUrl": "/polo_1.jpg",
+    "hasSizes": true,
+    "createdAt": "2026-07-14T00:00:00.000Z"
+  }
+]
+

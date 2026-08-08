@@ -1,0 +1,106 @@
+﻿# ============================================================
+#  Apache Rewrite rules for a Next.js static export (out/)
+#  hosted on cPanel / Apache.
+#
+#  Problem: `next build` with `output: "export"` produces flat
+#  .html files (contact.html, merch/item.html, ...).  Apache does
+#  NOT know to serve contact.html when the browser requests /contact,
+#  so it returns a 404.
+#
+#  Solution: mod_rewrite maps extensionless URLs to their .html
+#  equivalents *internally* (no redirect), so the browser URL stays
+#  clean.  Real files/dirs (images, JS chunks, .php, .mp3, ...) are
+#  always served directly without rewriting.
+# ============================================================
+
+Options -Indexes
+Options +FollowSymLinks
+
+# Guard: mod_rewrite must be available
+<IfModule mod_rewrite.c>
+
+  RewriteEngine On
+
+  # IMPORTANT:
+  # If the site lives at the domain root (keepinitreal.us/) leave
+  # RewriteBase as "/".
+  # If it lives in a subdirectory (keepinitreal.us/app/) change to
+  # "/app/" to match.
+  RewriteBase /
+
+  # Rule 0: Prevent /index loop
+  # Next.js exports the home page as index.html.  Without this,
+  # /index -> index.html -> /index -> ... would be an infinite loop.
+  RewriteRule ^index\.html$ / [R=301,L]
+
+  # Rule 1: Pass real files through untouched
+  # Covers: _next/ assets, images, .json, .mp3, .php, .svg, etc.
+  RewriteCond %{REQUEST_FILENAME} -f
+  RewriteRule ^ - [L]
+
+  # Rule 2: Map extensionless URL -> .html (internal rewrite)
+  # NOTE: Next.js also emits empty stub directories alongside .html
+  # files (e.g. out/contact/ next to out/contact.html).  We do NOT
+  # short-circuit on -d here because those stub directories contain
+  # no index.html.  Letting this rule run serves contact.html for
+  # /contact instead of a 403/404 directory listing.
+  #
+  # Condition a: URL has no file extension already
+  RewriteCond %{REQUEST_URI} !\.[a-zA-Z0-9]+$
+  # Condition b: the .html file actually exists on disk
+  RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI}.html -f
+  # Internal rewrite -- the URL in the browser does NOT change
+  RewriteRule ^(.*)$ $1.html [L]
+
+  # Rule 3: Strip trailing slash before .html lookup
+  # Handles /contact/ (with trailing slash) -> /contact.html
+  RewriteCond %{REQUEST_URI} !^/$
+  RewriteCond %{REQUEST_URI} /$
+  RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI}index.html !-f
+  RewriteRule ^(.*)/$ /$1 [R=301,L]
+
+</IfModule>
+
+# Custom 404 page
+# Next.js exports a pre-built 404.html; Apache serves it for any
+# request the rewrite rules above cannot resolve.
+ErrorDocument 404 /404.html
+
+# MIME types (safety net)
+<IfModule mod_mime.c>
+  AddType application/javascript   .js .mjs
+  AddType text/css                 .css
+  AddType image/svg+xml            .svg
+  AddType application/json         .json
+  AddType audio/mpeg               .mp3
+  AddType image/webp               .webp
+  AddType image/avif               .avif
+</IfModule>
+
+# Performance: cache static assets aggressively
+<IfModule mod_expires.c>
+  ExpiresActive On
+  # Immutable Next.js build hashes (/_next/static/...)
+  ExpiresByType application/javascript  "access plus 1 year"
+  ExpiresByType text/css                "access plus 1 year"
+  ExpiresByType image/jpeg              "access plus 1 month"
+  ExpiresByType image/png               "access plus 1 month"
+  ExpiresByType image/webp              "access plus 1 month"
+  ExpiresByType image/svg+xml           "access plus 1 month"
+  ExpiresByType audio/mpeg              "access plus 1 month"
+  # HTML pages and JSON should revalidate quickly
+  ExpiresByType text/html               "access plus 1 hour"
+  ExpiresByType application/json        "access plus 1 hour"
+</IfModule>
+
+# Security headers
+<IfModule mod_headers.c>
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-XSS-Protection "1; mode=block"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  # Long cache for immutable _next/static hashed files
+  <FilesMatch "\.[a-f0-9]{8,}\.(js|css)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+</IfModule>

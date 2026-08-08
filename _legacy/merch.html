@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merch & Support - Keepin' It Real</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://www.paypal.com/sdk/js?client-id=BAAOfsEPHoNED72q9UDB1pbKkj0TjXcEmXflhYQtqKNPNrQrbzXVRpsi4lvNQM5gN-tzx8H04tNpxdsNTc&components=hosted-buttons&enable-funding=venmo&currency=USD"></script>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-content">
+            <a href="index.html" class="nav-logo">
+                <img src="logotransparent.png" alt="Keepin It Real Logo">
+                Keepin' It Real
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="videos.html">Videos</a></li>
+                <li><a href="articles.html">News</a></li>
+                <li><a href="merch.html" class="active">Merch</a></li>
+            </ul>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container">
+            <h1 class="animate-on-scroll">Support Our Mission</h1>
+            <p class="animate-on-scroll">Grab some merch or listen to our original song!</p>
+        </div>
+    </header>
+
+    <!-- Merch Section -->
+    <section class="merch-section container">
+        
+        <div class="paypal-wrapper animate-on-scroll">
+            <h3 style="margin-bottom: 20px; color: var(--color-navy);">Get Keepin' It Real Gear</h3>
+            <div id="paypal-container-87SCSSXPZ9TZ4"></div>
+        </div>
+
+        <div class="song-banner animate-on-scroll">
+            <h3>Check Out Our New Song "Pedal Power"</h3>
+            <p style="margin-bottom: 20px; color: rgba(255,255,255,0.8);">Written and performed by Chris & Gary.</p>
+            <a href="pedalpower.mp3" target="_blank" class="btn btn-primary">
+                Listen to Pedal Power (Full Version)
+            </a>
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Keepin' It Real</h3>
+                    <p>A non-profit, grassroots venture capturing the heart and soul of San Diego, one story at a time.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Follow Our Journey</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link">FB</a>
+                        <a href="#" class="social-link">YT</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Keepin' It Real. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        paypal.HostedButtons({
+            hostedButtonId: "87SCSSXPZ9TZ4",
+        }).render("#paypal-container-87SCSSXPZ9TZ4");
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
