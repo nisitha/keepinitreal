@@ -1,31 +1,67 @@
 'use client';
+
 import { useEffect, useState } from 'react';
+import { db } from '@/lib/firebase';
+import { doc, onSnapshot } from 'firebase/firestore';
+import { recordVisitorTraffic } from '@/lib/trafficTracker';
 
 export default function HitCounter() {
-  const [hits, setHits] = useState<number | null>(null);
+  const [mounted, setMounted] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [displayCount, setDisplayCount] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchHits = async () => {
-      try {
-        const res = await fetch('/counter.php?t=' + Date.now());
-        if (!res.ok) throw new Error("Network response was not ok");
-        const data = await res.json();
-        setHits(Number(data.count));
-      } catch (err) {
-        console.warn("Failed to fetch from backend:", err);
-        setHits(null);
-      } finally {
-        setLoading(false);
+    setMounted(true);
+
+    // 1. Read cached count from localStorage immediately on mount to prevent layout shift / flash
+    try {
+      const cached = localStorage.getItem('last_traffic_count');
+      if (cached) {
+        setDisplayCount(cached);
       }
-    };
+    } catch {
+      // Storage unavailable
+    }
 
-    fetchHits();
+    // 2. Session tracking, daily rotation & peak calculation
+    recordVisitorTraffic().catch((err) => {
+      console.warn('Traffic tracking error:', err);
+    });
+
+    // 3. Real-time snapshot listener on site_stats/traffic
+    try {
+      const unsub = onSnapshot(
+        doc(db, 'site_stats', 'traffic'),
+        (docSnap) => {
+          let visits = 0;
+          if (docSnap.exists()) {
+            const data = docSnap.data();
+            if (typeof data?.totalVisits === 'number') {
+              visits = data.totalVisits;
+            }
+          }
+          const formatted = (90156 + visits).toLocaleString();
+          setDisplayCount(formatted);
+          setLoading(false);
+
+          try {
+            localStorage.setItem('last_traffic_count', formatted);
+          } catch {
+            // Storage unavailable
+          }
+        },
+        (err) => {
+          console.warn('site_stats/traffic snapshot fallback:', err);
+          setLoading(false);
+        }
+      );
+
+      return () => unsub();
+    } catch (err) {
+      console.warn('Error setting up onSnapshot for traffic:', err);
+      setLoading(false);
+    }
   }, []);
-
-  const displayValue = loading || hits === null || isNaN(hits!)
-    ? 'Loading...'
-    : hits!.toLocaleString();
 
   return (
     <div style={{ display: 'flex', justifyContent: 'center', marginTop: '24px' }}>
@@ -61,7 +97,7 @@ export default function HitCounter() {
         </svg>
 
         {/* Label + Value inline */}
-        <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px' }}>
+        <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', minHeight: '1.5rem' }}>
           <span style={{
             fontSize: '10px',
             letterSpacing: '0.2em',
@@ -71,16 +107,29 @@ export default function HitCounter() {
           }}>
             Total Visitors
           </span>
-          <span style={{
-            fontSize: '1.125rem',
-            fontWeight: 700,
-            background: 'linear-gradient(to right, #2DD4BF, #34D399)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
-          }}>
-            {displayValue}
-          </span>
+
+          {!mounted || (loading && !displayCount) ? (
+            <span
+              aria-label="Loading visitor count"
+              className="inline-block w-16 h-5 bg-teal-500/20 animate-pulse rounded align-middle"
+              style={{ minWidth: '60px' }}
+            />
+          ) : (
+            <span
+              suppressHydrationWarning
+              className="transition-opacity duration-300 ease-in opacity-100"
+              style={{
+                fontSize: '1.125rem',
+                fontWeight: 700,
+                background: 'linear-gradient(to right, #2DD4BF, #34D399)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+              }}
+            >
+              {displayCount}
+            </span>
+          )}
         </div>
 
       </div>

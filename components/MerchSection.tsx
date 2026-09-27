@@ -2,14 +2,18 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { db } from '@/lib/firebase';
+import { collection, query, orderBy, onSnapshot } from 'firebase/firestore';
 
 interface MerchItem {
   id: string;
   name: string;
+  title?: string;
   description?: string;
   price: string | number;
   imageUrl: string;
   hasSizes?: boolean;
+  businessEmail?: string;
 }
 
 const SIZES = ['S', 'M', 'L', 'XL', 'XXL'] as const;
@@ -22,14 +26,53 @@ export default function MerchSection() {
   const [selectedSizes, setSelectedSizes] = useState<Map<string, Size>>(new Map());
 
   useEffect(() => {
-    fetch('/merch.json')
-      .then(res => {
-        if (!res.ok) throw new Error('No merch found');
-        return res.json();
-      })
-      .then(data => setItems(data))
-      .catch(err => console.error("Error loading merch:", err))
-      .finally(() => setLoading(false));
+    let unsub: (() => void) | null = null;
+    try {
+      const q = query(collection(db, 'site_merch'), orderBy('order', 'asc'));
+      unsub = onSnapshot(
+        q,
+        (snapshot) => {
+          if (!snapshot.empty) {
+            const list: MerchItem[] = snapshot.docs.map((d) => {
+              const data = d.data();
+              return {
+                id: d.id,
+                name: data.title || data.name || 'Merch Item',
+                description: data.description || "Official Keepin' It Real Gear. Shipping included.",
+                price: data.price,
+                imageUrl: data.imageUrl || '/merch-polo.jpg',
+                hasSizes: !!data.hasSizes,
+                businessEmail: data.businessEmail || 'gary@lisaslight.com',
+              };
+            });
+            setItems(list);
+            setLoading(false);
+          } else {
+            // Fallback to static if collection is empty
+            fetch('/merch.json')
+              .then(res => res.json())
+              .then(data => setItems(data))
+              .catch(() => {})
+              .finally(() => setLoading(false));
+          }
+        },
+        (err) => {
+          console.warn('Firestore site_merch listener fallback:', err);
+          fetch('/merch.json')
+            .then(res => res.json())
+            .then(data => setItems(data))
+            .catch(() => {})
+            .finally(() => setLoading(false));
+        }
+      );
+    } catch (err) {
+      console.warn('Firestore site_merch error:', err);
+      setLoading(false);
+    }
+
+    return () => {
+      if (unsub) unsub();
+    };
   }, []);
 
   const selectSize = (itemId: string, size: Size) => {
@@ -76,8 +119,15 @@ export default function MerchSection() {
               ? `${item.name} - Size: ${selectedSize}` 
               : `${item.name} - One Size`;
 
+            // Bugfix: Sanitize price for PayPal (remove $ or letters)
+            const sanitizePrice = (p: string | number) => String(p).replace(/[^0-9.]/g, '');
+            const cleanPrice = sanitizePrice(item.price);
+            
+            // Bugfix: Fallback business email
+            const businessEmail = (item as any).businessEmail || 'gary@lisaslight.com';
+
             const checkoutUrl = canCheckout
-              ? `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=gary@lisaslight.com&item_name=${encodeURIComponent(itemNameWithSize)}&amount=${item.price}&currency_code=USD&notify_url=${encodeURIComponent('https://keepinitreal.us/ipn.php')}&custom=${encodeURIComponent(item.id)}`
+              ? `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=${encodeURIComponent(businessEmail)}&item_name=${encodeURIComponent(itemNameWithSize)}&amount=${cleanPrice}&currency_code=USD&notify_url=${encodeURIComponent('https://keepinitreal.us/ipn.php')}&custom=${encodeURIComponent(item.id)}`
               : '#';
 
             return (

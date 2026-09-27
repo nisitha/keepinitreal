@@ -1,35 +1,303 @@
 [
-  { "id": "1", "url": "https://www.youtube.com/embed/F84T2MVbL00", "title": "Excerpts \"Best Of\" Oct-June" },
-  { "id": "2", "url": "https://www.youtube.com/embed/olv_vtKxY74", "title": "San Diego County Fair" },
-  { "id": "3", "url": "https://www.youtube.com/embed/QnFo9MLtOzk", "title": "\"Museum of Us\" Balboa Park" },
-  { "id": "4", "url": "https://www.youtube.com/embed/F5ZEmPwk6G4", "title": "A Taste of Little Italy" },
-  { "id": "5", "url": "https://www.youtube.com/embed/8a90pQfgYsg", "title": "Centennial Park with Refugio" },
-  { "id": "6", "url": "https://www.youtube.com/embed/l1O2WwtAF5w", "title": "Congrats to the Grads!" },
-  { "id": "7", "url": "https://www.youtube.com/embed/v1mUxPF3X30", "title": "Reflections with Wayne" },
-  { "id": "8", "url": "https://www.youtube.com/embed/m-WdBjoFWGE", "title": "Vista Strawberry Festival" },
-  { "id": "9", "url": "https://www.youtube.com/embed/h8FMVcSXL5c", "title": "Seaport Village" },
-  { "id": "10", "url": "https://www.youtube.com/embed/bQUCAro-1TA", "title": "Cabrillo National Monument" },
-  { "id": "11", "url": "https://www.youtube.com/embed/yvxkbyUtfRY", "title": "Balboa Park May 2026" },
-  { "id": "12", "url": "https://www.youtube.com/embed/k_M3txU0FP0", "title": "Slideshow Music Video" },
-  { "id": "13", "url": "https://www.youtube.com/embed/J3MTChBTndQ", "title": "Torrey Pines State Park" },
-  { "id": "14", "url": "https://www.youtube.com/embed/Yqf-O9ICAJ8", "title": "Torrey Pines Gliderport" },
-  { "id": "15", "url": "https://www.youtube.com/embed/SRNpy4XVXN0", "title": "Oceanside Pier" },
-  { "id": "16", "url": "https://www.youtube.com/embed/mDJ_0txNh9s", "title": "Balboa Park" },
-  { "id": "17", "url": "https://www.youtube.com/embed/ZBOb7ZfNqzM", "title": "Little Italy" },
-  { "id": "18", "url": "https://www.youtube.com/embed/gMPHbPPBBBk", "title": "Pacific Beach Boardwalk" },
-  { "id": "19", "url": "https://www.youtube.com/embed/SueUqzJ7hoU", "title": "La Jolla Shores Beach" },
-  { "id": "20", "url": "https://www.youtube.com/embed/ZSUAwl-nUWk", "title": "Nautical History Gallery & Museum" },
-  { "id": "21", "url": "https://www.youtube.com/embed/yItF4DkFc24", "title": "Coronado Dog Beach" },
-  { "id": "22", "url": "https://www.youtube.com/embed/8hbj8MtecP0", "title": "CFA San Diego Cat Show" },
-  { "id": "23", "url": "https://www.youtube.com/embed/xTDoCtR2qdo", "title": "Mission Beach Belmont Park" },
-  { "id": "24", "url": "https://www.youtube.com/embed/eU4Irp0Smd8", "title": "Embarcadero USS Midway" },
-  { "id": "25", "url": "https://www.youtube.com/embed/uUQ0lumq_kg", "title": "Liberty Station Pisano Artistry" },
-  { "id": "26", "url": "https://www.youtube.com/embed/oY5rBLjX-aA", "title": "Old Town San Diego" },
-  { "id": "27", "url": "https://www.youtube.com/embed/cu8L51Uc4xQ", "title": "December Nights Balboa Park" },
-  { "id": "28", "url": "https://www.youtube.com/embed/WtqEqFF6cq4", "title": "Ocean Beach" },
-  { "id": "29", "url": "https://www.youtube.com/embed/fNETcHkAGdE", "title": "Archival Clips Not Yet Seen" },
-  { "id": "30", "url": "https://www.youtube.com/embed/4AGAkz1oaq0", "title": "Coronado with Refugio" },
-  { "id": "31", "url": "https://www.youtube.com/embed/UPF4PwlaENc", "title": "La Jolla" },
-  { "id": "32", "url": "https://www.youtube.com/embed/_Eh7H5pFHGw", "title": "Balboa Park Art Center" },
-  { "id": "33", "url": "https://www.youtube.com/embed/dsSRghMmItY", "title": "Pacific Beach Boardwalk" }
+  {
+    "id": "H9RX7m120WU",
+    "title": "UTC Mall Ice Rink",
+    "url": "https://www.youtube.com/embed/H9RX7m120WU",
+    "embedUrl": "https://www.youtube.com/embed/H9RX7m120WU",
+    "thumbnail": "https://img.youtube.com/vi/H9RX7m120WU/hqdefault.jpg"
+  },
+  {
+    "id": "EqLry4nVV4k",
+    "title": "Del Mar Dog Beach",
+    "url": "https://www.youtube.com/embed/EqLry4nVV4k",
+    "embedUrl": "https://www.youtube.com/embed/EqLry4nVV4k",
+    "thumbnail": "https://img.youtube.com/vi/EqLry4nVV4k/hqdefault.jpg"
+  },
+  {
+    "id": "hfCdX5l5j-Q",
+    "title": "Promo Keepin It Real",
+    "url": "https://www.youtube.com/embed/hfCdX5l5j-Q",
+    "embedUrl": "https://www.youtube.com/embed/hfCdX5l5j-Q",
+    "thumbnail": "https://img.youtube.com/vi/hfCdX5l5j-Q/hqdefault.jpg"
+  },
+  {
+    "id": "WB5QKDzjc-4",
+    "title": "Mira Mesa Farmers Market",
+    "url": "https://www.youtube.com/embed/WB5QKDzjc-4",
+    "embedUrl": "https://www.youtube.com/embed/WB5QKDzjc-4",
+    "thumbnail": "https://img.youtube.com/vi/WB5QKDzjc-4/hqdefault.jpg"
+  },
+  {
+    "id": "y0OTN_Q1WTc",
+    "title": "San Diego Automotive Museum",
+    "url": "https://www.youtube.com/embed/y0OTN_Q1WTc",
+    "embedUrl": "https://www.youtube.com/embed/y0OTN_Q1WTc",
+    "thumbnail": "https://img.youtube.com/vi/y0OTN_Q1WTc/hqdefault.jpg"
+  },
+  {
+    "id": "Ql0YH3LRXB4",
+    "title": "San Diego Comic-Con",
+    "url": "https://www.youtube.com/embed/Ql0YH3LRXB4",
+    "embedUrl": "https://www.youtube.com/embed/Ql0YH3LRXB4",
+    "thumbnail": "https://img.youtube.com/vi/Ql0YH3LRXB4/hqdefault.jpg"
+  },
+  {
+    "id": "4n7Pws27Z9g",
+    "title": "Save Kit Carson Park",
+    "url": "https://www.youtube.com/embed/4n7Pws27Z9g",
+    "embedUrl": "https://www.youtube.com/embed/4n7Pws27Z9g",
+    "thumbnail": "https://img.youtube.com/vi/4n7Pws27Z9g/hqdefault.jpg"
+  },
+  {
+    "id": "91ZYgdCrpQM",
+    "title": "\"Markets for Makers\"",
+    "url": "https://www.youtube.com/embed/91ZYgdCrpQM",
+    "embedUrl": "https://www.youtube.com/embed/91ZYgdCrpQM",
+    "thumbnail": "https://img.youtube.com/vi/91ZYgdCrpQM/hqdefault.jpg"
+  },
+  {
+    "id": "OC8xpN3EKpI",
+    "title": "FOX5 TV Interview",
+    "url": "https://www.youtube.com/embed/OC8xpN3EKpI",
+    "embedUrl": "https://www.youtube.com/embed/OC8xpN3EKpI",
+    "thumbnail": "https://img.youtube.com/vi/OC8xpN3EKpI/hqdefault.jpg"
+  },
+  {
+    "id": "91EQuPQdYus",
+    "title": "Birch Aquarium La Jolla",
+    "url": "https://www.youtube.com/embed/91EQuPQdYus",
+    "embedUrl": "https://www.youtube.com/embed/91EQuPQdYus",
+    "thumbnail": "https://img.youtube.com/vi/91EQuPQdYus/hqdefault.jpg"
+  },
+  {
+    "id": "F84T2MVbL00",
+    "title": "Excerpts \"Best Of\" Oct-June",
+    "url": "https://www.youtube.com/embed/F84T2MVbL00",
+    "embedUrl": "https://www.youtube.com/embed/F84T2MVbL00",
+    "thumbnail": "https://img.youtube.com/vi/F84T2MVbL00/hqdefault.jpg"
+  },
+  {
+    "id": "olv_vtKxY74",
+    "title": "San Diego County Fair",
+    "url": "https://www.youtube.com/embed/olv_vtKxY74",
+    "embedUrl": "https://www.youtube.com/embed/olv_vtKxY74",
+    "thumbnail": "https://img.youtube.com/vi/olv_vtKxY74/hqdefault.jpg"
+  },
+  {
+    "id": "QnFo9MLtOzk",
+    "title": "\"Museum of Us\" Balboa Park",
+    "url": "https://www.youtube.com/embed/QnFo9MLtOzk",
+    "embedUrl": "https://www.youtube.com/embed/QnFo9MLtOzk",
+    "thumbnail": "https://img.youtube.com/vi/QnFo9MLtOzk/hqdefault.jpg"
+  },
+  {
+    "id": "F5ZEmPwk6G4",
+    "title": "A Taste of Little Italy",
+    "url": "https://www.youtube.com/embed/F5ZEmPwk6G4",
+    "embedUrl": "https://www.youtube.com/embed/F5ZEmPwk6G4",
+    "thumbnail": "https://img.youtube.com/vi/F5ZEmPwk6G4/hqdefault.jpg"
+  },
+  {
+    "id": "8a90pQfgYsg",
+    "title": "Centennial Park with Refugio",
+    "url": "https://www.youtube.com/embed/8a90pQfgYsg",
+    "embedUrl": "https://www.youtube.com/embed/8a90pQfgYsg",
+    "thumbnail": "https://img.youtube.com/vi/8a90pQfgYsg/hqdefault.jpg"
+  },
+  {
+    "id": "l1O2WwtAF5w",
+    "title": "Congrats to the Grads!",
+    "url": "https://www.youtube.com/embed/l1O2WwtAF5w",
+    "embedUrl": "https://www.youtube.com/embed/l1O2WwtAF5w",
+    "thumbnail": "https://img.youtube.com/vi/l1O2WwtAF5w/hqdefault.jpg"
+  },
+  {
+    "id": "v1mUxPF3X30",
+    "title": "Reflections with Wayne",
+    "url": "https://www.youtube.com/embed/v1mUxPF3X30",
+    "embedUrl": "https://www.youtube.com/embed/v1mUxPF3X30",
+    "thumbnail": "https://img.youtube.com/vi/v1mUxPF3X30/hqdefault.jpg"
+  },
+  {
+    "id": "m-WdBjoFWGE",
+    "title": "Vista Strawberry Festival",
+    "url": "https://www.youtube.com/embed/m-WdBjoFWGE",
+    "embedUrl": "https://www.youtube.com/embed/m-WdBjoFWGE",
+    "thumbnail": "https://img.youtube.com/vi/m-WdBjoFWGE/hqdefault.jpg"
+  },
+  {
+    "id": "h8FMVcSXL5c",
+    "title": "Seaport Village",
+    "url": "https://www.youtube.com/embed/h8FMVcSXL5c",
+    "embedUrl": "https://www.youtube.com/embed/h8FMVcSXL5c",
+    "thumbnail": "https://img.youtube.com/vi/h8FMVcSXL5c/hqdefault.jpg"
+  },
+  {
+    "id": "bQUCAro-1TA",
+    "title": "Cabrillo National Monument",
+    "url": "https://www.youtube.com/embed/bQUCAro-1TA",
+    "embedUrl": "https://www.youtube.com/embed/bQUCAro-1TA",
+    "thumbnail": "https://img.youtube.com/vi/bQUCAro-1TA/hqdefault.jpg"
+  },
+  {
+    "id": "yvxkbyUtfRY",
+    "title": "Balboa Park May 2026",
+    "url": "https://www.youtube.com/embed/yvxkbyUtfRY",
+    "embedUrl": "https://www.youtube.com/embed/yvxkbyUtfRY",
+    "thumbnail": "https://img.youtube.com/vi/yvxkbyUtfRY/hqdefault.jpg"
+  },
+  {
+    "id": "k_M3txU0FP0",
+    "title": "Slideshow Music Video",
+    "url": "https://www.youtube.com/embed/k_M3txU0FP0",
+    "embedUrl": "https://www.youtube.com/embed/k_M3txU0FP0",
+    "thumbnail": "https://img.youtube.com/vi/k_M3txU0FP0/hqdefault.jpg"
+  },
+  {
+    "id": "J3MTChBTndQ",
+    "title": "Torrey Pines State Park",
+    "url": "https://www.youtube.com/embed/J3MTChBTndQ",
+    "embedUrl": "https://www.youtube.com/embed/J3MTChBTndQ",
+    "thumbnail": "https://img.youtube.com/vi/J3MTChBTndQ/hqdefault.jpg"
+  },
+  {
+    "id": "Yqf-O9ICAJ8",
+    "title": "Torrey Pines Gliderport",
+    "url": "https://www.youtube.com/embed/Yqf-O9ICAJ8",
+    "embedUrl": "https://www.youtube.com/embed/Yqf-O9ICAJ8",
+    "thumbnail": "https://img.youtube.com/vi/Yqf-O9ICAJ8/hqdefault.jpg"
+  },
+  {
+    "id": "SRNpy4XVXN0",
+    "title": "Oceanside Pier",
+    "url": "https://www.youtube.com/embed/SRNpy4XVXN0",
+    "embedUrl": "https://www.youtube.com/embed/SRNpy4XVXN0",
+    "thumbnail": "https://img.youtube.com/vi/SRNpy4XVXN0/hqdefault.jpg"
+  },
+  {
+    "id": "mDJ_0txNh9s",
+    "title": "Balboa Park",
+    "url": "https://www.youtube.com/embed/mDJ_0txNh9s",
+    "embedUrl": "https://www.youtube.com/embed/mDJ_0txNh9s",
+    "thumbnail": "https://img.youtube.com/vi/mDJ_0txNh9s/hqdefault.jpg"
+  },
+  {
+    "id": "ZBOb7ZfNqzM",
+    "title": "Little Italy",
+    "url": "https://www.youtube.com/embed/ZBOb7ZfNqzM",
+    "embedUrl": "https://www.youtube.com/embed/ZBOb7ZfNqzM",
+    "thumbnail": "https://img.youtube.com/vi/ZBOb7ZfNqzM/hqdefault.jpg"
+  },
+  {
+    "id": "gMPHbPPBBBk",
+    "title": "Pacific Beach Boardwalk",
+    "url": "https://www.youtube.com/embed/gMPHbPPBBBk",
+    "embedUrl": "https://www.youtube.com/embed/gMPHbPPBBBk",
+    "thumbnail": "https://img.youtube.com/vi/gMPHbPPBBBk/hqdefault.jpg"
+  },
+  {
+    "id": "SueUqzJ7hoU",
+    "title": "La Jolla Shores Beach",
+    "url": "https://www.youtube.com/embed/SueUqzJ7hoU",
+    "embedUrl": "https://www.youtube.com/embed/SueUqzJ7hoU",
+    "thumbnail": "https://img.youtube.com/vi/SueUqzJ7hoU/hqdefault.jpg"
+  },
+  {
+    "id": "ZSUAwl-nUWk",
+    "title": "Nautical History Gallery & Museum",
+    "url": "https://www.youtube.com/embed/ZSUAwl-nUWk",
+    "embedUrl": "https://www.youtube.com/embed/ZSUAwl-nUWk",
+    "thumbnail": "https://img.youtube.com/vi/ZSUAwl-nUWk/hqdefault.jpg"
+  },
+  {
+    "id": "yItF4DkFc24",
+    "title": "Coronado Dog Beach",
+    "url": "https://www.youtube.com/embed/yItF4DkFc24",
+    "embedUrl": "https://www.youtube.com/embed/yItF4DkFc24",
+    "thumbnail": "https://img.youtube.com/vi/yItF4DkFc24/hqdefault.jpg"
+  },
+  {
+    "id": "8hbj8MtecP0",
+    "title": "CFA San Diego Cat Show",
+    "url": "https://www.youtube.com/embed/8hbj8MtecP0",
+    "embedUrl": "https://www.youtube.com/embed/8hbj8MtecP0",
+    "thumbnail": "https://img.youtube.com/vi/8hbj8MtecP0/hqdefault.jpg"
+  },
+  {
+    "id": "xTDoCtR2qdo",
+    "title": "Mission Beach Belmont Park",
+    "url": "https://www.youtube.com/embed/xTDoCtR2qdo",
+    "embedUrl": "https://www.youtube.com/embed/xTDoCtR2qdo",
+    "thumbnail": "https://img.youtube.com/vi/xTDoCtR2qdo/hqdefault.jpg"
+  },
+  {
+    "id": "eU4Irp0Smd8",
+    "title": "Embarcadero USS Midway",
+    "url": "https://www.youtube.com/embed/eU4Irp0Smd8",
+    "embedUrl": "https://www.youtube.com/embed/eU4Irp0Smd8",
+    "thumbnail": "https://img.youtube.com/vi/eU4Irp0Smd8/hqdefault.jpg"
+  },
+  {
+    "id": "uUQ0lumq_kg",
+    "title": "Liberty Station Pisano Artistry",
+    "url": "https://www.youtube.com/embed/uUQ0lumq_kg",
+    "embedUrl": "https://www.youtube.com/embed/uUQ0lumq_kg",
+    "thumbnail": "https://img.youtube.com/vi/uUQ0lumq_kg/hqdefault.jpg"
+  },
+  {
+    "id": "oY5rBLjX-aA",
+    "title": "Old Town San Diego",
+    "url": "https://www.youtube.com/embed/oY5rBLjX-aA",
+    "embedUrl": "https://www.youtube.com/embed/oY5rBLjX-aA",
+    "thumbnail": "https://img.youtube.com/vi/oY5rBLjX-aA/hqdefault.jpg"
+  },
+  {
+    "id": "cu8L51Uc4xQ",
+    "title": "December Nights Balboa Park",
+    "url": "https://www.youtube.com/embed/cu8L51Uc4xQ",
+    "embedUrl": "https://www.youtube.com/embed/cu8L51Uc4xQ",
+    "thumbnail": "https://img.youtube.com/vi/cu8L51Uc4xQ/hqdefault.jpg"
+  },
+  {
+    "id": "WtqEqFF6cq4",
+    "title": "Ocean Beach",
+    "url": "https://www.youtube.com/embed/WtqEqFF6cq4",
+    "embedUrl": "https://www.youtube.com/embed/WtqEqFF6cq4",
+    "thumbnail": "https://img.youtube.com/vi/WtqEqFF6cq4/hqdefault.jpg"
+  },
+  {
+    "id": "fNETcHkAGdE",
+    "title": "Archival Clips Not Yet Seen",
+    "url": "https://www.youtube.com/embed/fNETcHkAGdE",
+    "embedUrl": "https://www.youtube.com/embed/fNETcHkAGdE",
+    "thumbnail": "https://img.youtube.com/vi/fNETcHkAGdE/hqdefault.jpg"
+  },
+  {
+    "id": "4AGAkz1oaq0",
+    "title": "Coronado with Refugio",
+    "url": "https://www.youtube.com/embed/4AGAkz1oaq0",
+    "embedUrl": "https://www.youtube.com/embed/4AGAkz1oaq0",
+    "thumbnail": "https://img.youtube.com/vi/4AGAkz1oaq0/hqdefault.jpg"
+  },
+  {
+    "id": "UPF4PwlaENc",
+    "title": "La Jolla",
+    "url": "https://www.youtube.com/embed/UPF4PwlaENc",
+    "embedUrl": "https://www.youtube.com/embed/UPF4PwlaENc",
+    "thumbnail": "https://img.youtube.com/vi/UPF4PwlaENc/hqdefault.jpg"
+  },
+  {
+    "id": "_Eh7H5pFHGw",
+    "title": "Balboa Park Art Center",
+    "url": "https://www.youtube.com/embed/_Eh7H5pFHGw",
+    "embedUrl": "https://www.youtube.com/embed/_Eh7H5pFHGw",
+    "thumbnail": "https://img.youtube.com/vi/_Eh7H5pFHGw/hqdefault.jpg"
+  },
+  {
+    "id": "dsSRghMmItY",
+    "title": "Pacific Beach Boardwalk",
+    "url": "https://www.youtube.com/embed/dsSRghMmItY",
+    "embedUrl": "https://www.youtube.com/embed/dsSRghMmItY",
+    "thumbnail": "https://img.youtube.com/vi/dsSRghMmItY/hqdefault.jpg"
+  }
 ]

@@ -21,6 +21,7 @@ export default function Navbar() {
           <li><Link href="/theme-song" className={pathname === '/theme-song' ? 'active' : ''} onClick={() => setMenuOpen(false)}>Theme Song</Link></li>
           <li><Link href="/news" className={pathname === '/news' ? 'active' : ''} onClick={() => setMenuOpen(false)}>News</Link></li>
           <li><Link href="/merch" className={pathname === '/merch' ? 'active' : ''} onClick={() => setMenuOpen(false)}>Merch</Link></li>
+          <li><Link href="/comments" className={pathname === '/comments' ? 'active' : ''} onClick={() => setMenuOpen(false)}>Comments</Link></li>
           <li><Link href="/contact" className={pathname === '/contact' ? 'active' : ''} onClick={() => setMenuOpen(false)}>Contact</Link></li>
         </ul>
         <button className="mobile-menu-btn" onClick={() => setMenuOpen(!menuOpen)}>

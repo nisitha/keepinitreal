@@ -3,13 +3,17 @@ import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
+import { db } from '@/lib/firebase';
+import { doc, getDoc, collection, getDocs } from 'firebase/firestore';
 
 interface MerchItem {
   id: string;
   name: string;
+  title?: string;
   description?: string;
   price: string | number;
   imageUrl: string;
+  businessEmail?: string;
 }
 
 function ProductDetails() {
@@ -23,17 +27,54 @@ function ProductDetails() {
       setLoading(false);
       return;
     }
-    fetch('/merch.json')
-      .then(res => {
-        if (!res.ok) throw new Error('No merch found');
-        return res.json();
-      })
-      .then((data: MerchItem[]) => {
-        const found = data.find(m => m.id === id);
-        setItem(found || null);
-      })
-      .catch(err => console.error("Error loading merch:", err))
-      .finally(() => setLoading(false));
+
+    async function loadItem() {
+      try {
+        const docSnap = await getDoc(doc(db, 'site_merch', id!));
+        if (docSnap.exists()) {
+          const data = docSnap.data();
+          setItem({
+            id: docSnap.id,
+            name: data.title || data.name || 'Merch Item',
+            description: data.description || "Official Keepin' It Real Gear. Shipping included.",
+            price: data.price,
+            imageUrl: data.imageUrl || '/merch-polo.jpg',
+            businessEmail: data.businessEmail || 'gary@lisaslight.com',
+          });
+          setLoading(false);
+          return;
+        }
+
+        const allSnap = await getDocs(collection(db, 'site_merch'));
+        const foundDoc = allSnap.docs.find(d => d.id === id || (d.data() as any).id === id);
+        if (foundDoc) {
+          const data = foundDoc.data();
+          setItem({
+            id: foundDoc.id,
+            name: data.title || data.name || 'Merch Item',
+            description: data.description || "Official Keepin' It Real Gear. Shipping included.",
+            price: data.price,
+            imageUrl: data.imageUrl || '/merch-polo.jpg',
+            businessEmail: data.businessEmail || 'gary@lisaslight.com',
+          });
+          setLoading(false);
+          return;
+        }
+
+        const res = await fetch('/merch.json');
+        if (res.ok) {
+          const data: MerchItem[] = await res.json();
+          const found = data.find(m => m.id === id);
+          setItem(found || null);
+        }
+      } catch (err) {
+        console.error('Error loading product from Firestore:', err);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadItem();
   }, [id]);
 
   if (loading) {
@@ -57,7 +98,15 @@ function ProductDetails() {
 
   const priceStr = String(item.price);
   const displayPrice = priceStr.startsWith('$') ? priceStr : `$${priceStr}`;
-  const checkoutUrl = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=gary@lisaslight.com&item_name=${encodeURIComponent(item.name)}&amount=${item.price}&currency_code=USD&notify_url=${encodeURIComponent('https://keepinitreal.us/ipn.php')}&custom=${encodeURIComponent(item.id)}`;
+  
+  // Bugfix: Sanitize price for PayPal (remove $ or letters)
+  const sanitizePrice = (p: string | number) => String(p).replace(/[^0-9.]/g, '');
+  const cleanPrice = sanitizePrice(item.price);
+  
+  // Bugfix: Fallback business email
+  const businessEmail = (item as any).businessEmail || 'gary@lisaslight.com';
+
+  const checkoutUrl = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=${encodeURIComponent(businessEmail)}&item_name=${encodeURIComponent(item.name)}&amount=${cleanPrice}&currency_code=USD&notify_url=${encodeURIComponent('https://keepinitreal.us/ipn.php')}&custom=${encodeURIComponent(item.id)}`;
 
   return (
     <div style={{ padding: '60px 20px', backgroundColor: '#FAFAFA', minHeight: '80vh' }}>
