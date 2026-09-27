@@ -29,23 +29,10 @@ function getAvatarColor(name: string) {
   return colors[charCode % colors.length];
 }
 
-function timeAgo(date: Date) {
-  const seconds = Math.floor((new Date().getTime() - date.getTime()) / 1000);
-  let interval = seconds / 31536000;
-  if (interval > 1) return Math.floor(interval) + " years ago";
-  interval = seconds / 2592000;
-  if (interval > 1) return Math.floor(interval) + " months ago";
-  interval = seconds / 86400;
-  if (interval > 1) return Math.floor(interval) + " days ago";
-  interval = seconds / 3600;
-  if (interval > 1) return Math.floor(interval) + " hours ago";
-  interval = seconds / 60;
-  if (interval > 1) return Math.floor(interval) + " minutes ago";
-  return "Just now";
-}
 
 export default function Comments() {
   const [comments, setComments] = useState<Comment[]>([]);
+  const [visibleCount, setVisibleCount] = useState(10);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [text, setText] = useState("");
@@ -140,11 +127,18 @@ export default function Comments() {
     <div className="max-w-2xl mx-auto space-y-8 pb-10">
       {/* 1. Comments Feed (Displayed FIRST) */}
       <div className="space-y-4">
-        <h3 className="text-gray-700 font-medium px-1">
-          {comments.length} {comments.length === 1 ? "Comment" : "Comments"}
-        </h3>
+        <div className="flex items-center justify-between px-1">
+          <h3 className="text-gray-700 font-medium">
+            {comments.length} {comments.length === 1 ? "Comment" : "Comments"}
+          </h3>
+          {comments.length > 10 && (
+            <span className="text-xs text-gray-400">
+              Showing {Math.min(visibleCount, comments.length)} of {comments.length}
+            </span>
+          )}
+        </div>
         
-        {comments.map((comment) => (
+        {comments.slice(0, visibleCount).map((comment) => (
           <div key={comment.id} className="bg-white p-4 rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
             <div className="flex items-start space-x-3">
               <div className={`w-10 h-10 flex-shrink-0 rounded-full flex items-center justify-center text-white font-bold text-lg ${getAvatarColor(comment.name)}`}>
@@ -159,11 +153,6 @@ export default function Comments() {
                     {comment.text}
                   </p>
                 </div>
-                <div className="flex items-center space-x-4 mt-1 px-4 text-xs text-gray-500">
-                  <span>
-                    {comment.createdAt?.toDate ? timeAgo(comment.createdAt.toDate()) : "Just now"}
-                  </span>
-                </div>
               </div>
             </div>
           </div>
@@ -174,6 +163,33 @@ export default function Comments() {
             No comments yet. Be the first to share your thoughts!
           </div>
         )}
+
+        {/* Load More Pagination */}
+        {visibleCount < comments.length ? (
+          <div className="text-center pt-2">
+            <button 
+              type="button"
+              onClick={() => setVisibleCount((prev) => prev + 10)}
+              className="inline-flex items-center justify-center gap-2 px-6 py-2.5 bg-white hover:bg-slate-50 text-slate-700 hover:text-slate-900 font-medium text-sm rounded-xl border border-slate-200 hover:border-slate-300 shadow-sm hover:shadow transition-all duration-200 active:scale-[0.98] cursor-pointer"
+            >
+              <svg 
+                className="w-4 h-4 text-slate-400" 
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+              <span>Load More Comments</span>
+            </button>
+          </div>
+        ) : comments.length > 0 ? (
+          <div className="text-center pt-2">
+            <p className="text-xs text-slate-400 font-medium">
+              You&apos;ve caught up with all comments.
+            </p>
+          </div>
+        ) : null}
       </div>
 
       {/* 2 & 3. Progressive Disclosure Form */}
